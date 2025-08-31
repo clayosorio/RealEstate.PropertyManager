@@ -12,6 +12,9 @@ namespace PropertyManager.Infrastructure.Implementations.Persistence.EFCore.Conf
 
             builder.HasKey(p => p.IdProperty);
 
+            builder.Property(p => p.IdProperty)
+                .ValueGeneratedOnAdd();
+
             builder.Property(p => p.Name)
                 .IsRequired()
                 .HasMaxLength(200);
