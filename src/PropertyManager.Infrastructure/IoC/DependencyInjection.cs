@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Azure.Storage.Blobs;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PropertyManager.Domain.Common.Sotrage.Repositories;
@@ -23,6 +24,8 @@ namespace PropertyManager.Infrastructure.IoC
 
             services.AddScoped<DbContext>(sp => sp.GetRequiredService<PropertyManagerDbContext>());
 
+            var connectionString = configuration.GetConnectionString("AzureBlobStorage");
+            services.AddSingleton(new BlobServiceClient(connectionString));
             services.AddScoped<IBlobStorageRepository, BlobStorageRepository>();
 
             return services;
