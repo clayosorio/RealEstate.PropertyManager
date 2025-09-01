@@ -5,7 +5,7 @@ using PropertyManager.Application.Commons.Results;
 using PropertyManager.Domain.Properties.Entities;
 using PropertyManager.Domain.Properties.Repositories;
 
-namespace PropertyManager.Application.UseCase.AddProperty
+namespace PropertyManager.Application.UseCase.Properties.AddProperty
 {
     public class AddPropertyCommandHandler(IPropertyRepository repository, IUnitOfWork unitOfWork) : IRequestHandler<AddPropertyCommand, Result<int>>
     {

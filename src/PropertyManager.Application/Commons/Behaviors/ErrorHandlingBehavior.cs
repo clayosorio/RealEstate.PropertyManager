@@ -22,7 +22,7 @@ namespace PropertyManager.Application.Commons.Behaviors
             catch (DomainError ex)
             {
                 _logger.LogError(ex, "Domain error: {Message}", ex.Message);
-                throw; // será capturado por el middleware global
+                throw;
             }
             catch (Exception ex)
             {

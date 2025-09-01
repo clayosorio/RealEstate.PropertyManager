@@ -1,9 +1,9 @@
-﻿using PropertyManager.Domain.Users.Entities;
+﻿using PropertyManager.Domain.Owners.Entities;
 
 namespace PropertyManager.Application.Abstractions.Insfraestructure.Security.Authentication
 {
     public interface ITokenProvider
     {
-        string Create(User user);
+        string Create(Owner owner);
     }
 }

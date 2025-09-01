@@ -2,6 +2,7 @@
 using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Tokens;
 using PropertyManager.Application.Abstractions.Insfraestructure.Security.Authentication;
+using PropertyManager.Domain.Owners.Entities;
 using PropertyManager.Domain.Users.Entities;
 using System.Globalization;
 using System.Security.Claims;
@@ -9,9 +10,9 @@ using System.Text;
 
 namespace PropertyManager.Infrastructure.Implementations.Security.Authentication
 {
-    internal class TokenProvider(IConfiguration configuration) : ITokenProvider
+    public class TokenProvider(IConfiguration configuration) : ITokenProvider
     {
-        public string Create(User user) 
+        public string Create(Owner owner) 
         {
             string secretKey = configuration["Jwt:Secret"]!;
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey));
@@ -22,8 +23,8 @@ namespace PropertyManager.Infrastructure.Implementations.Security.Authentication
             {
                 Subject = new ClaimsIdentity
                 ([
-                    new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString(CultureInfo.InvariantCulture)),
-                    new Claim(JwtRegisteredClaimNames.UniqueName, user.Username)
+                    new Claim(JwtRegisteredClaimNames.Sub, owner.IdOwner.ToString(CultureInfo.InvariantCulture)),
+                    new Claim(JwtRegisteredClaimNames.UniqueName, owner.Name)
                 ]),
                 Expires = DateTime.UtcNow.AddMinutes(configuration.GetValue<int>("Jwt:ExpirationInMinutes")),
                 SigningCredentials = credentials,

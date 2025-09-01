@@ -1,6 +1,6 @@
 ﻿using Swashbuckle.AspNetCore.Annotations;
 
-namespace PropertyManager.Api.Endpoints.Properties
+namespace PropertyManager.Api.Endpoints.Authentication
 {
     public static class SingInDocumentation
     {

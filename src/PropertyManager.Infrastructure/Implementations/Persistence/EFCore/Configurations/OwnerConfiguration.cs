@@ -24,7 +24,26 @@ namespace PropertyManager.Infrastructure.Implementations.Persistence.EFCore.Conf
 
             builder.Property(o => o.Birthday)
                 .HasColumnType("date");
-            
+
+            builder.Property(o => o.UserName)
+                .IsRequired()
+                .HasMaxLength(100);
+
+            builder.HasIndex(o => o.UserName).IsUnique();
+
+            builder.Property(o => o.Email)
+                .IsRequired()
+                .HasMaxLength(200);
+
+            builder.HasIndex(o => o.Email).IsUnique();
+
+            builder.Property(o => o.PasswordHash)
+                .IsRequired()
+                .HasMaxLength(500);
+
+            builder.Property(o => o.PasswordSalt)
+                .HasMaxLength(500);
+
             builder.HasMany(o => o.Properties)
                 .WithOne(p => p.Owner)
                 .HasForeignKey(p => p.IdOwner)

@@ -3,9 +3,9 @@ using Mapster;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using PropertyManager.Application.Commons.Results;
-using PropertyManager.Application.UseCase.AddProperty;
+using PropertyManager.Application.UseCase.Properties.AddProperty;
 
-namespace PropertyManager.Api.Endpoints.Properties
+namespace PropertyManager.Api.Endpoints.Properties.Add
 {
     public sealed record AddPropertyRequest(
         string Name,

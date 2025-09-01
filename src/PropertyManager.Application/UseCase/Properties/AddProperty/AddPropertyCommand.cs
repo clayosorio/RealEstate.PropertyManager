@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using PropertyManager.Application.Commons.Results;
 
-namespace PropertyManager.Application.UseCase.AddProperty
+namespace PropertyManager.Application.UseCase.Properties.AddProperty
 {
     public sealed record AddPropertyCommand(
         string Name,
