@@ -2,9 +2,9 @@
 {
     public interface IBlobStorageRepository
     {
-        Task<string> UploadAsync(Stream fileStream, string containerName, string blobName, string contentType, CancellationToken cancellationToken = default);
-        Task<Stream?> DownloadAsync(string containerName, string blobName, CancellationToken cancellationToken = default);
-        Task<bool> DeleteAsync(string containerName, string blobName, CancellationToken cancellationToken = default);
-        Task<IEnumerable<string>> ListAsync(string containerName, CancellationToken cancellationToken = default);
+        Task<string> UploadAsync(Stream fileStream, string blobName, string contentType, CancellationToken cancellationToken = default);
+        Task<Stream?> DownloadAsync(string blobName, CancellationToken cancellationToken = default);
+        Task<bool> DeleteAsync(string blobName, CancellationToken cancellationToken = default);
+        Task<IEnumerable<string>> ListAsync(CancellationToken cancellationToken = default);
     }
 }

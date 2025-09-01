@@ -1,21 +1,18 @@
 ﻿using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
+using Microsoft.Extensions.Options;
 using PropertyManager.Domain.Abstractions.Repositories;
+using PropertyManager.Infrastructure.Implementations.Configurations;
 
 namespace PropertyManager.Infrastructure.Implementations.Persistence.Sotrage
 {
-    public class BlobStorageRepository : IBlobStorageRepository
+    public class BlobStorageRepository(BlobServiceClient blobServiceClient, IOptions<BlobOptions> options) : IBlobStorageRepository
     {
-        private readonly BlobServiceClient _blobServiceClient;
+        private readonly BlobOptions _options = options.Value;
 
-        public BlobStorageRepository(BlobServiceClient blobServiceClient)
+        public async Task<string> UploadAsync(Stream fileStream, string blobName, string contentType, CancellationToken cancellationToken = default)
         {
-            _blobServiceClient = blobServiceClient;
-        }
-
-        public async Task<string> UploadAsync(Stream fileStream, string containerName, string blobName, string contentType, CancellationToken cancellationToken = default)
-        {
-            var container = _blobServiceClient.GetBlobContainerClient(containerName);
+            var container = blobServiceClient.GetBlobContainerClient(_options.ContainerName);
             await container.CreateIfNotExistsAsync(PublicAccessType.Blob, cancellationToken: cancellationToken);
 
             var blobClient = container.GetBlobClient(blobName);
@@ -27,9 +24,9 @@ namespace PropertyManager.Infrastructure.Implementations.Persistence.Sotrage
             return blobClient.Uri.ToString();
         }
 
-        public async Task<Stream?> DownloadAsync(string containerName, string blobName, CancellationToken cancellationToken = default)
+        public async Task<Stream?> DownloadAsync(string blobName, CancellationToken cancellationToken = default)
         {
-            var container = _blobServiceClient.GetBlobContainerClient(containerName);
+            var container = blobServiceClient.GetBlobContainerClient(_options.ContainerName);
             var blobClient = container.GetBlobClient(blobName);
 
             if (!await blobClient.ExistsAsync(cancellationToken)) return null;
@@ -38,17 +35,17 @@ namespace PropertyManager.Infrastructure.Implementations.Persistence.Sotrage
             return response.Value.Content;
         }
 
-        public async Task<bool> DeleteAsync(string containerName, string blobName, CancellationToken cancellationToken = default)
+        public async Task<bool> DeleteAsync(string blobName, CancellationToken cancellationToken = default)
         {
-            var container = _blobServiceClient.GetBlobContainerClient(containerName);
+            var container = blobServiceClient.GetBlobContainerClient(_options.ContainerName);
             var blobClient = container.GetBlobClient(blobName);
 
             return await blobClient.DeleteIfExistsAsync(cancellationToken: cancellationToken);
         }
 
-        public async Task<IEnumerable<string>> ListAsync(string containerName, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<string>> ListAsync(CancellationToken cancellationToken = default)
         {
-            var container = _blobServiceClient.GetBlobContainerClient(containerName);
+            var container = blobServiceClient.GetBlobContainerClient(_options.ContainerName);
 
             var blobs = new List<string>();
             await foreach (var blobItem in container.GetBlobsAsync(cancellationToken: cancellationToken))

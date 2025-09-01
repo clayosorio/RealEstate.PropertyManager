@@ -24,19 +24,19 @@ namespace PropertyManager.Api.Extensions
                 o.AddSecurityDefinition(JwtBearerDefaults.AuthenticationScheme, securityScheme);
 
                 var securityRequirement = new OpenApiSecurityRequirement
-            {
                 {
-                    new OpenApiSecurityScheme
                     {
-                        Reference = new OpenApiReference
+                        new OpenApiSecurityScheme
                         {
-                            Type = ReferenceType.SecurityScheme,
-                            Id = JwtBearerDefaults.AuthenticationScheme
-                        }
-                    },
-                    []
-                }
-            };
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = JwtBearerDefaults.AuthenticationScheme
+                            }
+                        },
+                        []
+                    }
+                };
 
                 o.AddSecurityRequirement(securityRequirement);
             });

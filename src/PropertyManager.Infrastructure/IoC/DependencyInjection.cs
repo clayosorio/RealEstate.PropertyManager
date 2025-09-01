@@ -9,7 +9,7 @@ namespace PropertyManager.Infrastructure.IoC
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddPersistence(configuration);
-            services.AddRepositories();
+            services.AddRepositories(configuration);
             services.AddAuthenticationInternal(configuration);
             services.AddAuthorizationInternal();
 

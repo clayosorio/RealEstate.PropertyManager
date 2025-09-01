@@ -34,7 +34,6 @@ namespace PropertyManager.Api.Extensions
                 .WithMetrics(metrics => metrics
                     .AddAspNetCoreInstrumentation()
                     .AddConsoleExporter());
-
         }
     }
 }

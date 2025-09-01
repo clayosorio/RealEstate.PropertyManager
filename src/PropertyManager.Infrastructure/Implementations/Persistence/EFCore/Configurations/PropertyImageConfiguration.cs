@@ -12,9 +12,8 @@ namespace PropertyManager.Infrastructure.Implementations.Persistence.EFCore.Conf
 
             builder.HasKey(pi => pi.IdPropertyImage);
 
-            builder.Property(pi => pi.File)
-                .IsRequired()
-                .HasMaxLength(500);
+            builder.Property(pi => pi.ImageUrl)
+                .IsRequired();
 
             builder.Property(pi => pi.Enabled)
                 .IsRequired();
