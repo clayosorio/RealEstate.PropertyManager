@@ -2,9 +2,10 @@
 using Mapster;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using PropertyManager.Api.Endpoints.Owners.Add;
-using PropertyManager.Application.Commons.Results;
+using PropertyManager.Api.Extensions;
+using PropertyManager.Api.Infrastructure;
 using PropertyManager.Application.UseCase.Authentications;
+using PropertyManager.Domain.Abstractions.Errors;
 
 namespace PropertyManager.Api.Endpoints.Authentication
 {
@@ -19,7 +20,7 @@ namespace PropertyManager.Api.Endpoints.Authentication
             {
                 SingInQuery command = request.Adapt<SingInQuery>();
                 Result<string> result = await sender.Send(command, cancellationToken);
-                return !string.IsNullOrEmpty(result.Value) ? Results.Ok(result) : Results.BadRequest(result);
+                return result.Match(Results.Ok, CustomResults.Problem);
             })
              .ConfigureSwagger();
         }

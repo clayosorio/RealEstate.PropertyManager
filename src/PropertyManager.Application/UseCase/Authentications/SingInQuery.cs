@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using PropertyManager.Application.Commons.Results;
+using PropertyManager.Domain.Abstractions.Errors;
 
 namespace PropertyManager.Application.UseCase.Authentications
 {

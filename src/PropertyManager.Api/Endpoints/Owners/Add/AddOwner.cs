@@ -2,8 +2,10 @@
 using Mapster;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using PropertyManager.Application.Commons.Results;
+using PropertyManager.Api.Extensions;
+using PropertyManager.Api.Infrastructure;
 using PropertyManager.Application.UseCase.Owners.AddOwner;
+using PropertyManager.Domain.Abstractions.Errors;
 
 namespace PropertyManager.Api.Endpoints.Owners.Add
 {
@@ -24,7 +26,7 @@ namespace PropertyManager.Api.Endpoints.Owners.Add
             {
                 AddOwnerCommand command = request.Adapt<AddOwnerCommand>();
                 Result<int> result = await sender.Send(command, cancellationToken);
-                return result.Value is not 0 ? Results.Ok(result) : Results.BadRequest(result);
+                return result.Match(Results.Created, CustomResults.Problem);
             })
             .ConfigureSwagger();
         }

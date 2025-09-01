@@ -4,7 +4,6 @@ using Microsoft.Extensions.DependencyInjection;
 using PropertyManager.Application.Abstractions.Insfraestructure.Persistence;
 using PropertyManager.Application.Abstractions.Insfraestructure.Security.Authentication;
 using PropertyManager.Domain.Abstractions.Repositories;
-using PropertyManager.Domain.Common.Sotrage.Repositories;
 using PropertyManager.Domain.Owners.Repositories;
 using PropertyManager.Domain.Properties.Repositories;
 using PropertyManager.Infrastructure.Implementations.Persistence.EFCore.Context;

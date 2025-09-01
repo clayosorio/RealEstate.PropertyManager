@@ -1,4 +1,4 @@
-﻿namespace PropertyManager.Domain.Common.Sotrage.Repositories
+﻿namespace PropertyManager.Domain.Abstractions.Repositories
 {
     public interface IBlobStorageRepository
     {

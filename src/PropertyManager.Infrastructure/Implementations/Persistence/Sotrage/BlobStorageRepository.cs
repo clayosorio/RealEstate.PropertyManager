@@ -1,6 +1,6 @@
 ﻿using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
-using PropertyManager.Domain.Common.Sotrage.Repositories;
+using PropertyManager.Domain.Abstractions.Repositories;
 
 namespace PropertyManager.Infrastructure.Implementations.Persistence.Sotrage
 {

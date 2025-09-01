@@ -1,8 +1,7 @@
 ﻿using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using PropertyManager.Application.Abstractions.Insfraestructure.Security.Authentication;
-using PropertyManager.Application.Commons.Behaviors;
+using PropertyManager.Application.Abstractions.Behaviors;
 using System.Reflection;
 
 namespace PropertyManager.Application.IoC
@@ -11,9 +10,13 @@ namespace PropertyManager.Application.IoC
     {
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
-            services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+            services.AddMediatR(config =>
+            {
+                config.RegisterServicesFromAssembly(typeof(DependencyInjection).Assembly);
+
+                config.AddOpenBehavior(typeof(ValidationPipelineBehavior<,>));
+            });
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
-            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 
             return services;
         }

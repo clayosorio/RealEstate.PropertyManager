@@ -1,8 +1,8 @@
 ﻿using MediatR;
 using PropertyManager.Application.Abstractions.Insfraestructure.Security.Authentication;
-using PropertyManager.Application.Commons.Results;
-using PropertyManager.Domain.Common.Errors;
+using PropertyManager.Domain.Abstractions.Errors;
 using PropertyManager.Domain.Owners.Entities;
+using PropertyManager.Domain.Owners.Errors;
 using PropertyManager.Domain.Owners.Repositories;
 
 namespace PropertyManager.Application.UseCase.Authentications
@@ -19,17 +19,15 @@ namespace PropertyManager.Application.UseCase.Authentications
 
             if (owner == null)
             {
-                return Result<string>.Failure(new UnauthorizedError());
+                return Result.Failure<string>(AuthenticationError.InvalidCredentials());
             }
 
             if (!passwordService.VerifyPasswordHash(request.password, owner.PasswordHash, owner.PasswordSalt))
             {
-                return Result<string>.Failure(new UnauthorizedError());
+                return Result.Failure<string>(AuthenticationError.InvalidCredentials());
             }
 
-            string token = tokenProvider.Create(owner);
-
-            return Result<string>.Success(token);
+            return tokenProvider.Create(owner);
         }
     }
 }

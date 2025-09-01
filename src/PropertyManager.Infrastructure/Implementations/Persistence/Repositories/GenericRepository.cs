@@ -16,7 +16,7 @@ namespace PropertyManager.Infrastructure.Implementations.Persistence.Repositorie
             _dbSet = _context.Set<T>();
         }
 
-        public async Task<T?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
+        public async Task<T?> GetByIdAsync(int id, CancellationToken cancellationToken = default)
         {
             return await _dbSet.FindAsync(new[] { id }, cancellationToken);
         }

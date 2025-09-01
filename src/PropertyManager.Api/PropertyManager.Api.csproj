@@ -24,4 +24,8 @@
     <ProjectReference Include="..\PropertyManager.Infrastructure\PropertyManager.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Middleware\" />
+  </ItemGroup>
+
 </Project>

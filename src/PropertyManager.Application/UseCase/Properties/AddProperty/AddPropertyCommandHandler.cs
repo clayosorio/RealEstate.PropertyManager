@@ -1,7 +1,7 @@
 ﻿using Mapster;
 using MediatR;
 using PropertyManager.Application.Abstractions.Insfraestructure.Persistence;
-using PropertyManager.Application.Commons.Results;
+using PropertyManager.Domain.Abstractions.Errors;
 using PropertyManager.Domain.Properties.Entities;
 using PropertyManager.Domain.Properties.Repositories;
 
