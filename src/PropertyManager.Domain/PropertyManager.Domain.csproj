@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Properties\Queries\Input\" />
     <Folder Include="Users\Queries\Inputs\" />
     <Folder Include="Users\Queries\Outputs\" />
   </ItemGroup>
