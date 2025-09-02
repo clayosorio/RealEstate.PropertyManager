@@ -5,22 +5,26 @@ using PropertyManager.Domain.Properties.Entities;
 using PropertyManager.Domain.Properties.Errors;
 using PropertyManager.Domain.Properties.Repositories;
 
-namespace PropertyManager.Application.UseCase.Properties.ChagePropertyPrice
+namespace PropertyManager.Application.UseCase.Properties.UpdateProperty
 {
-    public class ChangePropertyPriceCommandHandler(IPropertyRepository propertyRepository, IUnitOfWork unitOfWork) : IRequestHandler<ChangePropertyPriceCommand, Result>
+    public sealed class UpdatePropertyCommandHandler(
+        IPropertyRepository propertyRepository, 
+        IUnitOfWork unitOfWork) 
+        : IRequestHandler<UpdatePropertyCommand, Result>
     {
-        public async Task<Result> Handle(ChangePropertyPriceCommand request, CancellationToken cancellationToken)
+        public async Task<Result> Handle(UpdatePropertyCommand request, CancellationToken cancellationToken)
         {
             Property? property = await propertyRepository.GetByIdAsync(request.IdProperty);
 
             if (property is null)
             {
-                return Result.Failure(PropertyError.PropertyAlreadyExists(nameof(Property), request.IdProperty));
+                return Result.Failure(PropertyError.PropertyNotFound(nameof(Property), request.IdProperty));
             }
 
-            property.Price = request.NewPrice;
+            property.Name = request.Name;
+            property.Address = request.Address;
             property.UpdatedAt = DateTime.UtcNow;
-
+             
             propertyRepository.Update(property);
             await unitOfWork.SaveChangesAsync(cancellationToken);
             return Result.Success();

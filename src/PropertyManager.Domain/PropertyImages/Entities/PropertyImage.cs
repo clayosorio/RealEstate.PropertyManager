@@ -8,8 +8,7 @@ namespace PropertyManager.Domain.PropertyImages.Entities
         public int IdProperty { get; set; }
         public bool Enabled { get; set; }
         public required string ImageUrl { get; set; }
-
-
+        public DateTime CreatedAt { get; set; }
         public required virtual Property Property { get; set; }
     }
 }

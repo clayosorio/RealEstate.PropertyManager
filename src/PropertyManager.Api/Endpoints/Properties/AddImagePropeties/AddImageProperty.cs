@@ -9,20 +9,27 @@ using PropertyManager.Domain.Abstractions.Errors;
 
 namespace PropertyManager.Api.Endpoints.Properties.AddImagePropeties
 {
-    public sealed record AddImagePropertyRequest(
-        int IdProperty,
-        IFormFile Image);
+    //public sealed record AddImagePropertyRequest(
+    //    IFormFileCollection Images);
     public sealed class AddImageProperty : IEndpoint
     {
         public void MapEndpoint(IEndpointRouteBuilder app)
         {
-            app.MapPost($"api/properties/{nameof(AddImageProperty)}", async (AddImagePropertyRequest request, [FromServices] ISender sender, CancellationToken cancellationToken) =>
+            app.MapPost("api/properties/{IdProperty:int}/add-image", async (
+                int IdProperty,
+                IFormFileCollection images,
+                ISender sender,
+                CancellationToken cancellationToken) =>
             {
-                AddPropertyImageCommand command = request.Adapt<AddPropertyImageCommand>();
+                AddPropertyImageCommand command = new(IdProperty, images.ToList());
                 Result result = await sender.Send(command, cancellationToken);
-                return result.Match(Results.Created, CustomResults.Problem);
+                return result.Match(
+                    Results.Created,
+                    CustomResults.Problem);
             })
-             .ConfigureSwagger();
+            .DisableAntiforgery()
+            .Accepts<IFormFileCollection>("multipart/form-data")
+            .ConfigureSwagger();
         }
     }
 }

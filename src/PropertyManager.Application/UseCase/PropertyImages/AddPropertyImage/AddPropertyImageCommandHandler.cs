@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Http;
 using PropertyManager.Application.Abstractions.Insfraestructure.Persistence;
 using PropertyManager.Domain.Abstractions.Errors;
 using PropertyManager.Domain.Abstractions.Repositories;
@@ -19,28 +20,44 @@ namespace PropertyManager.Application.UseCase.PropertyImages.AddPropertyImage
     {
         public async Task<Result> Handle(AddPropertyImageCommand request, CancellationToken cancellationToken)
         {
-            Property? property = await propertyRepository.GetByIdAsync(request.IdPropery, cancellationToken);
+            Property? property = await propertyRepository.GetByIdAsync(request.IdProperty, cancellationToken);
 
             if (property is null)
             {
-                return Result.Failure(PropertyError.PropertyNotFound(nameof(Property), request.IdPropery));
+                return Result.Failure(PropertyError.PropertyNotFound(nameof(Property), request.IdProperty));
             }
 
-            var blobName = $"{request.IdPropery}/{Guid.NewGuid()}{Path.GetExtension(request.Image.FileName)}";
-
-            await using var stream = request.Image.OpenReadStream();
-            string imageUrl = await blobStorageRepository.UploadAsync(stream, blobName, request.Image.ContentType, cancellationToken);
-
-            PropertyImage propertyImage = new()
+            foreach (var image in request.Images)
             {
-                IdProperty = request.IdPropery,
-                ImageUrl = imageUrl,
-                Enabled = true,
-                Property = property
-            };
+                if (image == null || image.Length == 0)
+                    continue;
 
-            await propertyImageRepository.AddAsync(propertyImage, cancellationToken);
+                string blobName = $"{request.IdProperty}/{Guid.NewGuid()}{Path.GetExtension(image.FileName)}";
+
+                await using var stream = image.OpenReadStream();
+                string imageUrl = await blobStorageRepository.UploadAsync(
+                    stream,
+                    blobName,
+                    image.ContentType,
+                    cancellationToken
+                );
+
+
+                PropertyImage propertyImage = new()
+                {
+                    IdProperty = request.IdProperty,
+                    ImageUrl = imageUrl,
+                    Enabled = true,
+                    CreatedAt = DateTime.UtcNow,
+                    Property = property
+                };
+                
+
+                await propertyImageRepository.AddAsync(propertyImage, cancellationToken);
+            }
+
             await unitOfWork.SaveChangesAsync(cancellationToken);
+
             return Result.Success();
         }
     }

@@ -12,7 +12,8 @@ namespace PropertyManager.Domain.Properties.Entities
         public decimal Price { get; set; }
         public required string CodeInternal { get; set; }
         public int Year { get; set; }
-
+        public DateTime? UpdatedAt { get; set; }
+        public DateTime? CreatedAt { get; set; }
         public int IdOwner { get; set; }
         public required virtual Owner Owner { get; set; }
 

@@ -4,5 +4,5 @@ using PropertyManager.Domain.Abstractions.Errors;
 
 namespace PropertyManager.Application.UseCase.PropertyImages.AddPropertyImage
 {
-    public sealed record AddPropertyImageCommand(int IdPropery, IFormFile Image) : IRequest<Result>;
+    public sealed record AddPropertyImageCommand(int IdProperty, List<IFormFile> Images) : IRequest<Result>;
 }

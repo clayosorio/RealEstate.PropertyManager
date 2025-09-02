@@ -10,6 +10,7 @@ namespace PropertyManager.Domain.PropertyTraces.Entities
         public decimal Value { get; set; }
         public decimal Tax { get; set; }
         public int IdProperty { get; set; }
+        public DateTime CreatedAt { get; set; }
         public required virtual Property Property { get; set; }
     }
 }
