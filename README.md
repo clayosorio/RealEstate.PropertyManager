@@ -32,26 +32,26 @@ src/
 ├─ PropertyManager.Application/ # Casos de uso y lógica de negocio
 ├─ PropertyManager.Domain/ # Entidades, repositorios y reglas de dominio
 └─ PropertyManager.Test/ # Pruebas unitarias (xUnit / NUnit + Moq)
-
-css
-Copiar código
+```
 
 ---
-
-## 🏗️ Arquitectura (Clean Architecture)
-
 
 
 ---
 
 ## 🚀 Instalación y ejecución
 
-```bash
 # 1. Clonar el repositorio
+```bash
 git clone https://github.com/tuusuario/PropertyManager.git
+```
 
 # 2. Acceder a la carpeta raíz del proyecto
+```
 cd PropertyManager
+```
 
 # 3. Construir y levantar los contenedores con Docker
+```
 docker compose up -d --build
+```
