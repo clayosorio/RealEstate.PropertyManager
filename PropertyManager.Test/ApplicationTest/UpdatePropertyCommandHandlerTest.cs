@@ -37,7 +37,7 @@ namespace PropertyManager.Test.Application.UseCase.Properties.UpdateProperty
         public async Task Handle_ReturnsFailure_WhenPropertyDoesNotExist()
         {
             // Arrange
-            var command = new UpdatePropertyCommand(99, "Nuevo Nombre", "Nueva Dirección", 0, "", 0);
+            var command = new UpdatePropertyCommand(99, "Nuevo Nombre", "Nueva Dirección", 0);
 
             _propertyRepositoryMock
                 .Setup(r => r.GetByIdAsync(command.IdProperty, It.IsAny<CancellationToken>()))
@@ -83,7 +83,7 @@ namespace PropertyManager.Test.Application.UseCase.Properties.UpdateProperty
                 }
             };
 
-            var command = new UpdatePropertyCommand(property.IdProperty, "Nombre Actualizado", "Dirección Actualizada", property.Price, property.CodeInternal, property.Year);
+            var command = new UpdatePropertyCommand(property.IdProperty, "Nombre Actualizado", "Dirección Actualizada", property.Year);
 
             _propertyRepositoryMock
                 .Setup(r => r.GetByIdAsync(command.IdProperty, It.IsAny<CancellationToken>()))
@@ -139,7 +139,7 @@ namespace PropertyManager.Test.Application.UseCase.Properties.UpdateProperty
                 }
             };
 
-            var command = new UpdatePropertyCommand(property.IdProperty, "Nombre Nuevo", "Dirección Nueva", property.Price, property.CodeInternal, property.Year);
+            var command = new UpdatePropertyCommand(property.IdProperty, "Nombre Nuevo", "Dirección Nueva", property.Year);
 
             _propertyRepositoryMock
                 .Setup(r => r.GetByIdAsync(command.IdProperty, It.IsAny<CancellationToken>()))

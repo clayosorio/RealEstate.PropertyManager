@@ -18,6 +18,9 @@ namespace PropertyManager.Infrastructure.Implementations.Persistence.EFCore.Conf
             builder.Property(pi => pi.Enabled)
                 .IsRequired();
 
+            builder.Property(p => p.CreatedAt)
+                .HasColumnType("datetime");
+
             builder.HasOne(pi => pi.Property)
                 .WithMany(p => p.PropertyImages)
                 .HasForeignKey(pi => pi.IdProperty);

@@ -32,10 +32,10 @@ namespace PropertyManager.Infrastructure.Implementations.Persistence.EFCore.Conf
             builder.HasIndex(p => p.CodeInternal).IsUnique();
 
             builder.Property(p => p.CreatedAt)
-                .HasDefaultValueSql("GETDATE()");
+                .HasColumnType("datetime");
 
             builder.Property(p => p.UpdatedAt)
-                .HasDefaultValueSql("GETDATE()");
+                .HasColumnType("datetime");
 
             builder.Property(p => p.Year)
                 .IsRequired();

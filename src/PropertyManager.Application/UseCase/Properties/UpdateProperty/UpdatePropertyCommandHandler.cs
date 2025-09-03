@@ -23,6 +23,7 @@ namespace PropertyManager.Application.UseCase.Properties.UpdateProperty
 
             property.Name = request.Name;
             property.Address = request.Address;
+            property.Year = request.Year;
             property.UpdatedAt = DateTime.UtcNow;
              
             propertyRepository.Update(property);
