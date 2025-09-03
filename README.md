@@ -39,7 +39,7 @@ src/
 
 ---
 
-## 🚀 Instalación y ejecución
+## Instalación y ejecución
 
 # 1. Instalar Docker
 ```
