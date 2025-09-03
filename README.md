@@ -1,25 +1,25 @@
-# 🏠 PropertyManager
+#PropertyManager
 
-## 📖 Descripción
+## Descripción
 **PropertyManager** es una solución desarrollada en **.NET 9** y **C# 13.0** para la gestión de propiedades inmobiliarias, propietarios y autenticación de usuarios.  
 
 El proyecto está diseñado siguiendo principios de **Clean Architecture** y **buenas prácticas de diseño de software**, exponiendo una **API RESTful** con endpoints para operaciones CRUD, autenticación y manejo de imágenes.
 
 ---
 
-## ✨ Características principales
-- 📌 **Gestión de propiedades**: Alta, modificación, listado con filtros y carga de imágenes.  
-- 👤 **Gestión de propietarios**: Registro y administración de propietarios.  
-- 🔐 **Autenticación**: Endpoint para inicio de sesión.  
-- ⚡ **Manejo de errores global**: Middleware centralizado para capturar y responder excepciones de forma uniforme.  
-- 📑 **Documentación de endpoints**: Archivos dedicados para cada recurso.  
-- 🛠️ **Inyección de dependencias**: Configuración centralizada y extensible.  
-- 🔒 **Permisos y autorización**: Decoradores para proteger rutas según permisos.  
-- 🧩 **Extensiones para configuración**: Métodos para agregar endpoints, CORS, monitoreo y servicios.  
+##  Características principales
+-  **Gestión de propiedades**: Alta, modificación, listado con filtros y carga de imágenes.  
+- **Gestión de propietarios**: Registro y administración de propietarios.  
+- **Autenticación**: Endpoint para inicio de sesión.  
+- **Manejo de errores global**: Middleware centralizado para capturar y responder excepciones de forma uniforme.  
+- **Documentación de endpoints**: Archivos dedicados para cada recurso.  
+- **Inyección de dependencias**: Configuración centralizada y extensible.  
+- **Permisos y autorización**: Decoradores para proteger rutas según permisos.  
+- **Extensiones para configuración**: Métodos para agregar endpoints, CORS, monitoreo y servicios.  
 
 ---
 
-## 🗂️ Estructura del proyecto
+## Estructura del proyecto
 ```bash
 src/
 ├─ PropertyManager.Api/ # Proyecto principal de la API
