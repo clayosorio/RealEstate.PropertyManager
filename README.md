@@ -47,9 +47,9 @@ src/
    git clone https://github.com/tuusuario/PropertyManager.git
    
 ### Acceder a la carpeta raíz del proyecto:
-
-cd PropertyManager
+    ```bash
+      cd PropertyManager
 
 ### Construir y levantar los contenedores:
-
-docker compose up -d --build
+    ```bash
+      docker compose up -d --build
