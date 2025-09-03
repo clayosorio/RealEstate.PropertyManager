@@ -39,18 +39,7 @@ Copiar código
 
 ## 🏗️ Arquitectura (Clean Architecture)
 
-```mermaid
-flowchart TD
-    A[Presentation Layer] --> B[Application Layer]
-    B --> C[Domain Layer]
-    C --> D[Infrastructure Layer]
 
-    A:::layer
-    B:::layer
-    C:::layer
-    D:::layer
-
-    classDef layer fill:#f9f,stroke:#333,stroke-width:2px,color:#000;
 🚀 Instalación y ejecución
 🔹 Requisitos previos
 Tener instalado Docker.
