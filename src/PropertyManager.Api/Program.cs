@@ -1,8 +1,7 @@
 using PropertyManager.Api;
 using PropertyManager.Api.Extensions;
 using PropertyManager.Application.IoC;
-
-
+using PropertyManager.Infrastructure.Implementations.Persistence.Repositories;
 using PropertyManager.Infrastructure.IoC;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +20,12 @@ services
 var app = builder.Build();
 
 app.UsePresentation(configuration);
+
+using (var scope = app.Services.CreateScope())
+{
+    var initializer = scope.ServiceProvider.GetRequiredService<DatabaseInitializer>();
+    initializer.Initialize();
+}
 
 app.Run();
 

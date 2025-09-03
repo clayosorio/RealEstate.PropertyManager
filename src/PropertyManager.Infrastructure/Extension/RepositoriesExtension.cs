@@ -36,6 +36,7 @@ namespace PropertyManager.Infrastructure.Extension
             services.AddScoped<IOwnerRepository, OwnerRepository>();
             services.AddScoped<IPasswordService, PasswordService>();
             services.AddScoped<IPropertyImageRepository, PropertyImageRepository>();
+            services.AddScoped<DatabaseInitializer>();
 
             return services;
         }
