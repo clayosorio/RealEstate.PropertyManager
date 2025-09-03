@@ -23,10 +23,10 @@ namespace PropertyManager.Infrastructure.Extension
             }
             else
             {
-                services.AddDbContext<PropertyManagerDbContext>(o => o.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+                services.AddDbContext<PropertyManagerDbContext>(o => o.UseSqlServer(Environment.GetEnvironmentVariable("ConnectionStrings__DefaultConnection")));
             }
 
-            var connectionString = configuration.GetConnectionString("AzureBlobStorage");
+            var connectionString = Environment.GetEnvironmentVariable("BlobStorage__ConnectionString");
             services.AddSingleton(new BlobServiceClient(connectionString));
             services.AddScoped<DbContext>(sp => sp.GetRequiredService<PropertyManagerDbContext>());
             services.AddScoped<IUnitOfWork, UnitOfWork>();

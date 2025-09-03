@@ -1,0 +1,66 @@
+version: '3.6'
+
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver
+    ports:
+      - "1433:1433"
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Clay45763448*#
+    volumes:
+      - sql_data:/var/opt/mssql
+    networks:
+      propertymanager-network:
+        ipv4_address: 172.28.0.2
+
+  azurite:
+    image: mcr.microsoft.com/azure-storage/azurite
+    container_name: azuriteBlob
+    command: "azurite-blob --loose --blobHost 0.0.0.0 -l /data"
+    ports:
+      - "10000:10000"
+      - "10001:10001"
+      - "10002:10002"
+    volumes:
+      - azurite_data:/data
+    networks:
+      propertymanager-network:
+        ipv4_address: 172.28.0.3
+
+  propertymanager-api:
+    build:
+      context: .
+      dockerfile: ./src/PropertyManager.Api/Dockerfile
+    container_name: propertymanager-api
+    ports:
+      - "5000:8080" # API expuesta en http://localhost:5000
+      - "5001:8081" # Para HTTPS si lo activas
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+      - ConnectionStrings__DefaultConnection=Server=sqlserver,1433;Database=PropertyManager;User Id=sa;Password=Clay45763448*#;TrustServerCertificate=True;Encrypt=False;
+      - BlobStorage__ConnectionString=DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=http://azuriteBlob:10000/devstoreaccount1;
+      - BlobStorage__ContainerName=properties
+      - Jwt__Secret=super-duper-secret-value-that-should-be-in-user-secrets
+      - Jwt__Issuer=trycontrollerwebapi
+      - Jwt__Audience=developers
+      - Jwt__ExpirationInMinutes=180
+    depends_on:
+      - sqlserver
+      - azurite
+    networks:
+      propertymanager-network:
+        ipv4_address: 172.28.0.4
+
+networks:
+  propertymanager-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.0.0/16
+          gateway: 172.28.0.1
+
+volumes:
+  sql_data:
+  azurite_data:

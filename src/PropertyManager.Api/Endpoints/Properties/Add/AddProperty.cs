@@ -14,7 +14,8 @@ namespace PropertyManager.Api.Endpoints.Properties.Add
         string Address,
         decimal Price,
         int Year,
-        int IdOwner);
+        int IdOwner, 
+        DateTime CreatedAt);
     public sealed class AddProperty : IEndpoint
     {
         public void MapEndpoint(IEndpointRouteBuilder app)
