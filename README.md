@@ -47,15 +47,14 @@ Tener instalado Docker.
 🔹 Pasos de instalación
 Clonar el repositorio:
 
-bash
-Copiar código
+```bash
+  
 git clone https://github.com/tuusuario/PropertyManager.git
 Acceder a la carpeta raíz del proyecto:
 
-bash
-Copiar código
+```bash
 cd PropertyManager
-Construir y levantar los contenedores:
+ Construir y levantar los contenedores:
 
 bash
 Copiar código
