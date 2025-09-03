@@ -41,17 +41,22 @@ src/
 
 ## 🚀 Instalación y ejecución
 
-# 1. Clonar el repositorio
+#1. Instalar Docke
+```
+https://docs.docker.com/engine/install/
+```
+
+# 2. Clonar el repositorio
 ```bash
 git clone https://github.com/tuusuario/PropertyManager.git
 ```
 
-# 2. Acceder a la carpeta raíz del proyecto
+# 3. Acceder a la carpeta raíz del proyecto
 ```
 cd PropertyManager
 ```
 
-# 3. Construir y levantar los contenedores con Docker
+# 4. Construir y levantar los contenedores con Docker
 ```
 docker compose up -d --build
 ```
