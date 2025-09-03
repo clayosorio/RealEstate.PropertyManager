@@ -30,11 +30,11 @@
 
 2. **Clonar el repositorio:**
 
-    **Ejecutar este comando desde la carpeta raíz principal del repositorio:
-    **Ejemplo: E:\RealEstate.PropertyManager
+    Ejecutar este comando desde la carpeta raíz principal del repositorio:
+    Ejemplo: E:\RealEstate.PropertyManager
 
-    **Comando:
-    **docker compose up -d --build
+    Comando:
+    docker compose up -d --build
 
 
 
