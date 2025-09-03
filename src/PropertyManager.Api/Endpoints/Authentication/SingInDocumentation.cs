@@ -7,13 +7,13 @@ namespace PropertyManager.Api.Endpoints.Authentication
         public static void ConfigureSwagger(this RouteHandlerBuilder builder)
         {
             builder.WithMetadata(new SwaggerOperationAttribute(
-                     summary: "Autenticar usuario",
+                     summary: "Autenticación de un propietario",
                      description: "Permite a un usuario iniciar sesión con su correo electrónico y contraseña. Devuelve un token JWT si la autenticación es exitosa."
                  ))
                  .WithOpenApi(operation =>
                  {
-                     operation.Summary = "Permite a un usuario iniciar sesión con su correo electrónico y contraseña. Devuelve un token JWT si la autenticación es exitosa.";
-                     operation.Description = "Autenticación de usuario";
+                     operation.Summary = "Autenticación de un propietario";
+                     operation.Description = "Permite a un usuario iniciar sesión con su correo electrónico y contraseña. Devuelve un token JWT si la autenticación es exitosa.";
                      return operation;
                  });
         }

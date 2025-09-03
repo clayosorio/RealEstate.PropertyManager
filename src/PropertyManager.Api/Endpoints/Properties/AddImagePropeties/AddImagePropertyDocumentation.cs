@@ -7,13 +7,13 @@ namespace PropertyManager.Api.Endpoints.Properties.AddImagePropeties
         public static void ConfigureSwagger(this RouteHandlerBuilder builder)
         {
             builder.WithMetadata(new SwaggerOperationAttribute(
-                     summary: "Autenticar usuario",
-                     description: "Permite a un usuario iniciar sesión con su correo electrónico y contraseña. Devuelve un token JWT si la autenticación es exitosa."
+                     summary: "Asignar imagenes a propiedad",
+                     description: "Permite al usuario asignarle imagenes a una propiedad"
                  ))
                  .WithOpenApi(operation =>
                  {
-                     operation.Summary = "Permite a un usuario iniciar sesión con su correo electrónico y contraseña. Devuelve un token JWT si la autenticación es exitosa.";
-                     operation.Description = "Autenticación de usuario";
+                     operation.Summary = "Asignar imagenes a propiedad";
+                     operation.Description = "Permite al usuario asignarle imagenes a una propiedad";
                      return operation;
                  });
         }

@@ -22,6 +22,7 @@ namespace PropertyManager.Api.Endpoints.Authentication
                 Result<string> result = await sender.Send(command, cancellationToken);
                 return result.Match(Results.Ok, CustomResults.Problem);
             })
+             .WithTags("Autenticación")
              .ConfigureSwagger();
         }
     }

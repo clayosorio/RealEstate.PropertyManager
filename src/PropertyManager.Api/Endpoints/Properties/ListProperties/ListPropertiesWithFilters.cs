@@ -22,12 +22,14 @@ namespace PropertyManager.Api.Endpoints.Properties.ListProperties
     {
         public void MapEndpoint(IEndpointRouteBuilder app)
         {
-            app.MapGet("/properties/filter", async (ISender sender, [AsParameters] ListPropertiesQueryRequest request, CancellationToken cancellationToken = default) =>
+            app.MapGet($"/properties/{nameof(ListPropertiesWithFilters)}", async (ISender sender, [AsParameters] ListPropertiesQueryRequest request, CancellationToken cancellationToken = default) =>
             {
                 ListPropertiesQuery listPropertiesQuery = request.Adapt<ListPropertiesQuery>();
                 Result<PagedResult<PropertyOutputDto>> result = await sender.Send(listPropertiesQuery, cancellationToken);
                 return result.Match(Results.Ok, CustomResults.Problem);
             })
+            .RequireAuthorization()
+            .WithTags("Properties")
             .ConfigureSwagger();
         }
     }

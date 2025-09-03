@@ -27,6 +27,8 @@ namespace PropertyManager.Api.Endpoints.Properties.Add
 
                 return result.Match(Results.Created, CustomResults.Problem);
             })
+            .RequireAuthorization()
+            .WithTags("Properties")
             .ConfigureSwagger();
         }
     }

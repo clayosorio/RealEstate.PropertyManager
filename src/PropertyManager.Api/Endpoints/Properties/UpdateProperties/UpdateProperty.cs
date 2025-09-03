@@ -19,7 +19,10 @@ namespace PropertyManager.Api.Endpoints.Properties.UpdateProperties
                 UpdatePropertyCommand command = request.Adapt<UpdatePropertyCommand>();
                 Result result = await sender.Send(command, cancellationToken);
                 return result.Match(Results.Created, CustomResults.Problem);
-            });
+            })
+            .RequireAuthorization()
+            .WithTags("Properties")
+            .ConfigureSwagger();
         }
     }
 }
