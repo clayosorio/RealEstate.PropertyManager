@@ -48,7 +48,7 @@ https://docs.docker.com/engine/install/
 
 # 2. Clonar el repositorio
 ```bash
-git clone https://github.com/tuusuario/PropertyManager.git
+git clone [https://github.com/tuusuario/PropertyManager.git](https://github.com/clayosorio/RealEstate.PropertyManager.git)
 ```
 
 # 3. Acceder a la carpeta raíz del proyecto
