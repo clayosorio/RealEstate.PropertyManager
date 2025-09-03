@@ -26,38 +26,15 @@
 
 ## Instalación y ejecución
 1. **Requisitos previos:**
-   - .NET 9 SDK
-   - Visual Studio 2022 o superior
+    Tener instalado docker.
 
 2. **Clonar el repositorio:**
 
+  Ejecutar este comando desde la carpeta raíz principal del repositorio:
+  Ejemplo: E:\RealEstate.PropertyManager
 
-3. **Restaurar paquetes:**
-4. **Compilar la solución:**
-5. **Ejecutar la API:**
-
-## Extensibilidad
-El proyecto utiliza métodos de extensión para agregar endpoints, servicios y middlewares de forma sencilla y escalable. Los endpoints se registran automáticamente mediante reflexión y se agrupan por permisos cuando es necesario.
-
-## Configuración
-La configuración de la aplicación se encuentra en `appsettings.json`, donde se pueden ajustar parámetros como cadenas de conexión, políticas de CORS, y otros valores relevantes.
-
-## Dependencias externas
-
-Este proyecto requiere los siguientes servicios externos, que se pueden levantar fácilmente con Docker:
-
-### SQL Server
-
-
-## Servicios externos con Docker
-
-Para el funcionamiento local del proyecto, necesitas levantar los siguientes contenedores Docker:
-
-### SQL Server
-
-Ejecuta el siguiente comando para iniciar SQL Server 2022 en Docker:
-
-docker compose up -d --build
+  Comando:
+  docker compose up -d --build
 
 
 
