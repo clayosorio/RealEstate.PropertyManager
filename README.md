@@ -57,6 +57,7 @@ Para el funcionamiento local del proyecto, necesitas levantar los siguientes con
 
 Ejecuta el siguiente comando para iniciar SQL Server 2022 en Docker:
 
+docker compose up -d --build
 
 
 
