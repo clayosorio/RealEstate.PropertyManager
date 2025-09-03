@@ -25,8 +25,8 @@
 - **PropertyManager.Test/**: Pruebas unitarias con NUnit y Moq.
 
 ## Instalación y ejecución
-1. **Requisitos previos:**
-    **Tener instalado docker.
+1. **Requisitos previos:
+    Tener instalado docker.
 
 2. **Clonar el repositorio:**
 
