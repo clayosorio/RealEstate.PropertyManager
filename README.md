@@ -41,7 +41,7 @@ src/
 
 ## 🚀 Instalación y ejecución
 
-#1. Instalar Docke
+# 1. Instalar Docker
 ```
 https://docs.docker.com/engine/install/
 ```
