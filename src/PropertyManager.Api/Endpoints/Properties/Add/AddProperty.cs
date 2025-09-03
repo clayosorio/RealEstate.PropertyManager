@@ -13,7 +13,6 @@ namespace PropertyManager.Api.Endpoints.Properties.Add
         string Name,
         string Address,
         decimal Price,
-        string CodeInternal,
         int Year,
         int IdOwner);
     public sealed class AddProperty : IEndpoint

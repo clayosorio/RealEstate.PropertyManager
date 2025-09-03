@@ -16,5 +16,10 @@ namespace PropertyManager.Infrastructure.Implementations.Persistence.Repositorie
         {
             return await _dbSet.FirstOrDefaultAsync(o => o.UserName == userName, cancellationToken: cancellationToken);
         }
+
+        public async Task<bool> ExistAsync(int idOwner, CancellationToken cancellationToken)
+        {
+            return await _dbSet.AnyAsync(o => o.IdOwner == idOwner,  cancellationToken);
+        }
     }
 }

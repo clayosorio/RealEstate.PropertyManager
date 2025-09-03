@@ -7,5 +7,6 @@ namespace PropertyManager.Domain.Owners.Repositories
     {
         Task<bool> ExistsByUserNameAsync(string userName, CancellationToken cancellationToken);
         Task<Owner?> GetByUserNameAsync(string userName, CancellationToken cancellationToken);
+        Task<bool> ExistAsync(int idOwner, CancellationToken cancellationToken);
     }
 }

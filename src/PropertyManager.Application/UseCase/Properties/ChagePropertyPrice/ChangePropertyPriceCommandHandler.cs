@@ -11,7 +11,7 @@ namespace PropertyManager.Application.UseCase.Properties.ChagePropertyPrice
     {
         public async Task<Result> Handle(ChangePropertyPriceCommand request, CancellationToken cancellationToken)
         {
-            Property? property = await propertyRepository.GetByIdAsync(request.IdProperty);
+            Property? property = await propertyRepository.GetByIdAsync(request.IdProperty, cancellationToken);
 
             if (property is null)
             {
