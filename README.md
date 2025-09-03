@@ -26,7 +26,7 @@
 
 ## Instalación y ejecución
 1. **Requisitos previos:**
-   -Tener instalado docker.
+   **Tener instalado docker.
 
 2. **Clonar el repositorio:**
 
