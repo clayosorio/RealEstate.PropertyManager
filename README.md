@@ -40,70 +40,17 @@ Copiar código
 ## 🏗️ Arquitectura (Clean Architecture)
 
 
-🚀 Instalación y ejecución
-🔹 Requisitos previos
-Tener instalado Docker.
-
-🔹 Pasos de instalación
-Clonar el repositorio:
-
-```bash
-  
-git clone https://github.com/tuusuario/PropertyManager.git
-Acceder a la carpeta raíz del proyecto:
-
-```bash
-cd PropertyManager
- Construir y levantar los contenedores:
-
-bash
-Copiar código
-docker compose up -d --build
-🧪 Ejemplo de uso rápido
-🔹 Crear un propietario
-bash
-Copiar código
-curl -X POST http://localhost:5000/api/owners \
-  -H "Content-Type: application/json" \
-  -d '{
-        "name": "Juan Pérez",
-        "address": "Calle Falsa 123",
-        "email": "juan@example.com",
-        "userName": "juanperez",
-        "password": "SuperSecreta123"
-      }'
-🔹 Crear una propiedad
-bash
-Copiar código
-curl -X POST http://localhost:5000/api/properties \
-  -H "Content-Type: application/json" \
-  -d '{
-        "name": "Casa en la playa",
-        "address": "Av. del Mar 456",
-        "price": 250000,
-        "year": 2021,
-        "codeInternal": "CASA-001",
-        "idOwner": 1
-      }'
-🔹 Listar propiedades con filtros
-bash
-Copiar código
-curl "http://localhost:5000/api/properties?name=Casa&page=1&pageSize=10"
-🛡️ Licencia
-Este proyecto se distribuye bajo la licencia MIT.
-Siéntete libre de usarlo, modificarlo y contribuir. 🙌
-
-yaml
-Copiar código
 
 ---
 
-¿Quieres que también te prepare un **badge de build/status** (Docker, .NET, MIT License, etc.) para que tu README se vea aún más pro en GitHub?
+## 🚀 Instalación y ejecución
 
+```bash
+# 1. Clonar el repositorio
+git clone https://github.com/tuusuario/PropertyManager.git
 
+# 2. Acceder a la carpeta raíz del proyecto
+cd PropertyManager
 
-
-
-
-
-Preguntar a ChatGPT
+# 3. Construir y levantar los contenedores con Docker
+docker compose up -d --build
