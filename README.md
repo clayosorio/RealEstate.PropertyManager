@@ -20,6 +20,7 @@ El proyecto está diseñado siguiendo principios de **Clean Architecture** y **b
 ---
 
 ## 🗂️ Estructura del proyecto
+```bash
 src/
 ├─ PropertyManager.Api/ # Proyecto principal de la API
 │ ├─ Endpoints/ # Implementaciones de endpoints REST
