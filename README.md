@@ -43,13 +43,13 @@ src/
 
 ### 🔹 Pasos de instalación
 1. Clonar el repositorio:
-   ```bash
+   ```
    git clone https://github.com/tuusuario/PropertyManager.git
    
 ### Acceder a la carpeta raíz del proyecto:
-    ```bash
+    ```
       cd PropertyManager
 
 ### Construir y levantar los contenedores:
-    ```bash
+    ```
       docker compose up -d --build
